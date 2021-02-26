@@ -6,7 +6,7 @@ class Solution(GenericSolution):
 
     def solve(self):
         # sort pizzas by number of ingredients
-        self.pizzas.sort(key=lambda x: x['count'], reverse=True)
+        self.PIZZAS.sort(key=lambda x: x['count'], reverse=True)
 
         # deal pizzas to teams, trying to fill the larger teams first
         team_sizes = {
@@ -19,19 +19,17 @@ class Solution(GenericSolution):
         total_number_of_teams = 0
         # For each team size
         for t in range(4, 1, -1):
-            if len(self.pizzas) >= t:
+            if len(self.PIZZAS) >= t and len(self.PIZZAS) - t != 1:
                 print(str(t) + '-sized teams:')
                 # For each team
                 for i in range(team_sizes[t]):
-                    if len(self.pizzas) >= t:
+                    if len(self.PIZZAS) >= t:
                         output += str(t) + ' '
                         p = []
                         for k in range(t):
-                            print(k)
-                            p.append(self.pizzas.pop(0)['id'])
+                            p.append(self.PIZZAS.pop(0)['id'])
 
-                        output += ' '.join(p)
-                        output += '\n'
+                        output += ' '.join(p) + '\n'
                         total_number_of_teams = total_number_of_teams + 1
 
         # Return actual solution

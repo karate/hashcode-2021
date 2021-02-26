@@ -12,19 +12,24 @@ files =  [
     'e_many_teams.in'                   # 100K pizzas, 100 unique ingredients
 ]
 
-# For each dataset
-for filename in files:
-    reader = Reader(filename)
-    reader.read_file(calculate_unique_ingredients = True);
+def main():
+    # For each dataset
+    for filename in files:
+        print(filename)
+        reader = Reader(filename)
+        reader.read_file(calculate_unique_ingredients = True);
 
-    # SOLVE PROBLEM
-    s = Solution(
-        reader.get_parameters(),
-        reader.get_pizzas()
-    )
+        # SOLVE PROBLEM
+        s = Solution(
+            reader.get_parameters(),
+            reader.get_pizzas()
+        )
 
-    # Open output file
-    f = open(filename.split('.')[0] + '.out', 'w')
-    # Write solution
-    f.write(s.solve())
-    f.close()
+        # Open output file
+        f = open(filename.split('.')[0] + '.out', 'w')
+        # Write solution
+        f.write(s.solve())
+        f.close()
+
+if __name__ == '__main__':
+    main()
