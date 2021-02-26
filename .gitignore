@@ -1,2 +1,4 @@
 *.out
+tags
+*.gz
 __pycache__
